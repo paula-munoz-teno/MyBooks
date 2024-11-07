@@ -12,6 +12,7 @@ import { FormRegisterComponent } from './components/form-register/form-register.
 import { ProfileComponent } from './pages/profile/profile.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     FooterComponent,
     FormRegisterComponent,
     ProfileComponent,
+   
     
    
   ],
