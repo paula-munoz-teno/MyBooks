@@ -9,6 +9,7 @@ import { ComponentsComponent } from './components/components.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormRegisterComponent } from './components/form-register/form-register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { FormRegisterComponent } from './components/form-register/form-register.
     HeaderComponent,
     FooterComponent,
     FormRegisterComponent,
+    ProfileComponent,
+    
    
   ],
   imports: [
