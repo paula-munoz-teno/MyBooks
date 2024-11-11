@@ -6,6 +6,7 @@
             <!-- <img src="../../../assets/img/pau.jpg" /> -->
             <img src="{{miUser.photo}}" />
 
+
         
             <!-- <h3> Paula Muñoz Teno </h3> -->
             <div class= datospersonales>
@@ -38,10 +39,12 @@
                 <div class="form">
                     <form action="/submit" method="POST">
                                            
+                        
+
                         <label for="nombre">Name:</label>
                         <input type="text" id="nombre" name="nombre" required #input1>
                         <br><br>
-            
+             
                         <label for="apellido">Lastname:</label>
                         <input type="text" id="apellido" name="apellido" required #input2>
                         <br><br>
@@ -51,11 +54,11 @@
                         <br><br>
             
                         <label for="url">Url:</label>
-                        <input type="text" id="url" name="url">
+                        <input type="text" id="url" name="url" required #input4>
                         <br><br> 
                       
                   
-                        <button type="button" (click)= "enviar1(input1); enviar2(input2); enviar3(input3)" >Modify</button>
+                        <button type="button" (click)= "enviar(input1, input2, input3, input4)" >Modify</button>
                
                     </form>
                 </div>

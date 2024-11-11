@@ -5,7 +5,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = 
-[{path:"home", component:HomeComponent},
+[{path: "", redirectTo: '/home', pathMatch: 'full' }, // Ruta por defecto
+ {path:"home", component:HomeComponent},
  {path:"register", component:RegisterComponent},
  {path:"profile", component:ProfileComponent}
 ];
