@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+/* Definición de variables de color */
+:root {
+    --primary-color: #3498db; /* Azul */
+    --secondary-color: #2ecc71; /* Verde */
+    --accent-color: #e74c3c; /* Rojo */
+    --background-color: #ecf0f1; /* Gris claro */
+    --text-color: #2c3e50; /* Gris oscuro */
+  }
+  
+  /* Aplicar el tamaño de pantalla */
+  .full-height {
+    height: 100vh; /* 100% de la altura de la ventana */
+    display: flex; /* Para centrar contenido, opcional */
+    justify-content: center; /* Centrar horizontalmente, opcional */
+    align-items: center; /* Centrar verticalmente, opcional */
+    background-color: var(--background-color); /* Usar la variable de fondo */
+    color: var(--text-color); /* Usar la variable de color de texto */
+  }

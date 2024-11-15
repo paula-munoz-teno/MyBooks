@@ -1,0 +1,71 @@
+   
+ <div class="cajaprofile">
+    
+    <div class="cajapadre">
+        <div class="caja1">
+            <!-- <img src="../../../assets/img/pau.jpg" /> -->
+            <img src="{{miUser.photo}}" />
+
+
+        
+            <!-- <h3> Paula Muñoz Teno </h3> -->
+            <div class= datospersonales>
+             
+                
+                <div class="DP">
+                    <!-- <div class="etiqueta">Name</div>
+                    <div class="relleno">Paula</div> -->
+                    Name: {{'   ' + miUser.name}}
+                </div>
+                <div class="DP">
+                     <!-- <div class="etiqueta">Surename</div>
+                     <div class="relleno">Muñoz Teno</div> -->
+                     Lastname: {{miUser.last_name}}
+                </div>
+                <div class="DP">
+                     <!-- <div class="etiqueta">Email</div>
+                     <div class="relleno">paulamunozteno@gmail.com</div> -->
+                     Email: {{miUser.email}}
+                </div>
+            </div>
+
+        <!-- <div [hidden]="isHidden"> El elemento que aparece y desaparece </div> -->
+
+        </div>
+        <div class="caja2">
+            
+                <div class="contenedorform">
+                <h2>Register Form</h2>
+                <div class="form">
+                    <form action="/submit" method="POST">
+                                           
+                        
+
+                        <label for="nombre">Name:</label>
+                        <input type="text" id="nombre" name="nombre" required #input1>
+                        <br><br>
+             
+                        <label for="apellido">Lastname:</label>
+                        <input type="text" id="apellido" name="apellido" required #input2>
+                        <br><br>
+            
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" required #input3>
+                        <br><br>
+            
+                        <label for="url">Url:</label>
+                        <input type="text" id="url" name="url" required #input4>
+                        <br><br> 
+                      
+                  
+                        <button type="button" (click)= "enviar(input1, input2, input3, input4)" >Modify</button>
+               
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+            
+        
+    </div>
+</div>
