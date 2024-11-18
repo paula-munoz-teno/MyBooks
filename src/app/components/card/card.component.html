@@ -1,0 +1,57 @@
+ 
+<!-- {{BooksHijo[0].author}}  -->
+<div class="container2">
+
+                
+
+                <ng-container *ngIf="BooksHijo.length === 0">
+                No hay libros
+                </ng-container>
+                
+                <ng-container *ngFor="let Book of BooksHijo">
+                        <div class="card" style="width: 18rem;">
+                            <button type="button" >X</button>
+
+                            <img src="{{Book.photo}}" />
+                            <div class="card-body">
+                                <div class="contenido" id="tipo">
+                                    _____________{{Book.type}}_____________
+                                </div>
+                            
+                                <div class="cont" id="title">
+                                    {{Book.title}}
+                                </div>
+
+                                <div class="cont" id="autor">
+                                    {{Book.author}}
+                                </div>
+
+                                <div class="cont">
+                                    {{Book.id_book | reflibro}}
+                                </div>
+
+                                <div class="cont">
+                                    User's ID{{Book.id_user}}
+                                </div>
+
+                                <div class="cont"  id="price" >
+                                    Price: {{Book.price}} €
+                                </div>   
+                                
+                                <a href="#" [ngClass]="{'btn-dark': i % 2 === 0, 'btn-secondary': i % 2 !== 0}" class="btn">Comprar</a>
+                                
+                                <!-- FUNDAMENTACIÓN EJEMPLO -->
+                                <!-- let i = index: This captures the index of the current item in the loop, which allows you to determine if the index is even or odd.
+
+                                [ngClass]: This directive is used to conditionally apply classes to the button:
+                                
+                                If the index i is even (i % 2 === 0), the button will have the class btn-primary.
+                                If the index i is odd (i % 2 !== 0), the button will have the class btn-secondary. -->
+
+                            </div>
+                    
+                
+                    </div>
+                </ng-container>
+          
+            </div> 

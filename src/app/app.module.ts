@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { CommonModule } from '@angular/common';
 import { BooksComponent } from './pages/books/books.component';
 import { ReflibroPipe } from './pipes/reflibro.pipe';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ReflibroPipe } from './pipes/reflibro.pipe';
     ProfileComponent,
     BooksComponent,
     ReflibroPipe,
+    CardComponent,
 
    
     
