@@ -51,25 +51,40 @@
                     </div>
                 
                     <!-- <button type="submit" class="btn btn-primary" >Enviar</button> -->
-                    <button type="button" (click)= "enviar(input1, input2, input3, input4, input5, input6, input7)" class="btn btn-primary">Modify</button>
+                    <button type="button" (click)= "enviar(input1, input2, input3, input4, input5, input6, input7)" class="btn btn-dark">Modify</button>
                 </form>
 
         
             </div>
 
             <h2>Book Collection</h2>
-            <app-card [BooksHijo]="Books"></app-card>
+            <!-- <app-card [BooksHijo]="Books"></app-card>  -->
+            <!-- <app-card [BooksHijo]="Books"  (eventoBooks)="ocultar($event)"></app-card> --> 
+
 
             <!-- Podría haberse hecho el ngfor en el padre en lugar de en el hijo -->
-            <!-- <div class="container2">
+            <div class="container2">
 
-                
+            
 
                 <ng-container *ngIf="Books.length === 0">
-                No hay ciudades
+                No hay libros
                 </ng-container>
                 
-                <ng-container *ngFor="let Book of Books;  let i = index">
+                <ng-container *ngFor="let book of Books;  let i = index">
+                    <app-card [libroHijo]="book" (eventoBooks) = "eliminarTarjeta($event)"></app-card>
+
+            
+
+
+
+
+
+
+
+                                <!-- nombre variable componente hijo nombre variable componentente padre
+ creo mi variable libro que va a a ser  un elemento de mi array libros
+
                         <div class="card" style="width: 18rem;">
                             <img src="{{Book.photo}}" />
                             <div class="card-body">
@@ -97,7 +112,9 @@
                                     Price: {{Book.price}} €
                                 </div>   
                                 
-                                <a href="#" [ngClass]="{'btn-dark': i % 2 === 0, 'btn-secondary': i % 2 !== 0}" class="btn">Comprar</a>
+                             <button Class="btn btn-secondary">Comprar</button>
+
+                                <a href="#" [ngClass]="{'btn-dark': i % 2 === 0, 'btn-secondary': i % 2 !== 0}" class="btn">Comprar</a> -->
                                 
                                 <!-- FUNDAMENTACIÓN EJEMPLO -->
                                 <!-- let i = index: This captures the index of the current item in the loop, which allows you to determine if the index is even or odd.
@@ -107,13 +124,13 @@
                                 If the index i is even (i % 2 === 0), the button will have the class btn-primary.
                                 If the index i is odd (i % 2 !== 0), the button will have the class btn-secondary. -->
 
-                            <!-- </div> --> 
+                            <!-- </div>  -->
                     
-<!--                 
-                    </div>
+               
+                    <!-- </div>  -->
                 </ng-container>
-           -->
-            <!-- </div> -->
+        
+            </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

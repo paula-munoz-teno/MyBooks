@@ -19,17 +19,20 @@ export class BooksComponent implements OnInit
   public Books : Book[];
   
   
+  
+  
 //creo array de libros 
 
   constructor()
   {
+
     // this.Books=[];
     this.Books = [
       //creo libros
-      new Book(22222, 22221, "Un verso suelto", "Tapa Blanda", "Use Lahoz", 15 , "assets/img/L1.jpg"),
-      new Book(33333, 33331, "Carol", "Tapa Blanda", "Patricia Highsmith", 18 , "assets/img/L2carol.jpeg"),
-      new Book(44444, 44441, "Los siete Maridos de Evelyn Hugo", "Tapa Blanda", "Taylor Jekkins Reid", 20 , "assets/img/L3.webp")
-  
+      new Book("Un verso suelto", "Tapa Blanda", "Use Lahoz", 15 , "assets/img/L1.jpg", 22222, 22221),
+      new Book("Carol", "Tapa Blanda", "Patricia Highsmith", 18 , "assets/img/L2carol.jpeg", 33333, 33331),
+      new Book("Los siete Maridos de Evelyn Hugo", "Tapa Blanda", "Taylor Jekkins Reid", 20 , "assets/img/L3.webp",44444, 44441)
+  //poner al final
     ]     
     // this.Books[3] = {id_user:; id_book: title:"",   }
    
@@ -45,18 +48,44 @@ ngOnInit():void
 
     // Crear un nuevo libro con los valores de los inputs
     this.Books[this.Books.length] = new Book(
-      parseInt(input1.value), // id_book
-      parseInt(input2.value), // id_user
+      
       input3.value,           // title
       input4.value,           // type
       input5.value,           // author
       parseFloat(input6.value),// price
-      input7.value            // photo
+      input7.value,            // photo,
+      parseInt(input1.value), // id_book
+      parseInt(input2.value) // id_user
     );
 
   
+    
 
     }
+
+
+    eliminarTarjeta(identificadorlibro:number)
+    
+    //guardo id 
+    {
+      console.log(identificadorlibro);
+      this.Books = this.Books.filter(book => book.id_book !== identificadorlibro )
+
+
+
+      
+//guardo el id en el atributo idBook
+//filter o for
+    
+    }
+
+    // removeBook(bookId: number) {
+    //   this.books = this.books.filter(book => book.id !== bookId);
+    
+    // ocultar(nuevoBooksHijo: Book[]){
+    // console.log(nuevoBooksHijo);
+    // this.Bookspadre = nuevoBooksHijo;
+    // }
 
   // enviar(input1:HTMLInputElement, input2:HTMLInputElement, input3:HTMLInputElement, input4:HTMLInputElement,
   // input5:HTMLInputElement, input6:HTMLInputElement, input7:HTMLInputElement)

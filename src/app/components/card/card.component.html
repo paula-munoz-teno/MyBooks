@@ -1,45 +1,38 @@
- 
-<!-- {{BooksHijo[0].author}}  -->
-<div class="container2">
 
-                
-
-                <ng-container *ngIf="BooksHijo.length === 0">
-                No hay libros
-                </ng-container>
-                
-                <ng-container *ngFor="let Book of BooksHijo">
                         <div class="card" style="width: 18rem;">
-                            <button type="button" >X</button>
+                            <button type="button" (click)="eliminarTarjeta()" >X</button>
 
-                            <img src="{{Book.photo}}" />
+                            <img src="{{libroHijo.photo}}" />
                             <div class="card-body">
                                 <div class="contenido" id="tipo">
-                                    _____________{{Book.type}}_____________
+                                    _____________{{libroHijo.type}}_____________
                                 </div>
                             
                                 <div class="cont" id="title">
-                                    {{Book.title}}
+                                    {{libroHijo.title}}
                                 </div>
 
                                 <div class="cont" id="autor">
-                                    {{Book.author}}
+                                    {{libroHijo.author}}
                                 </div>
 
                                 <div class="cont">
-                                    {{Book.id_book | reflibro}}
+                                    {{libroHijo.id_book | reflibro}}
                                 </div>
 
                                 <div class="cont">
-                                    User's ID{{Book.id_user}}
+                                    User's ID{{libroHijo.id_user}}
                                 </div>
 
                                 <div class="cont"  id="price" >
-                                    Price: {{Book.price}} €
+                                    Price: {{libroHijo.price}} €
                                 </div>   
                                 
-                                <a href="#" [ngClass]="{'btn-dark': i % 2 === 0, 'btn-secondary': i % 2 !== 0}" class="btn">Comprar</a>
-                                
+                                <button Class="btn btn-secondary" >Comprar</button>
+                                                        <!-- <button [ngClass]="{'btn-dark': i % 2 === 0, 'btn-secondary': i % 2 !== 0}" class="btn"> -->
+
+                                <!-- <a href="#" [ngClass]="{'btn-dark': book.isEven, 'btn-secondary': !book.isEven}" class="btn"> -->
+
                                 <!-- FUNDAMENTACIÓN EJEMPLO -->
                                 <!-- let i = index: This captures the index of the current item in the loop, which allows you to determine if the index is even or odd.
 
@@ -52,6 +45,4 @@
                     
                 
                     </div>
-                </ng-container>
-          
-            </div> 
+             
