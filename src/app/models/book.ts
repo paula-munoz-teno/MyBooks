@@ -1,4 +1,7 @@
 export class Book {
+        forEach(arg0: (libro: any, index: any) => void) {
+          throw new Error('Method not implemented.');
+        }
     
         constructor  ( 
           public title: string, public type: string, 
