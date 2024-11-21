@@ -67,11 +67,11 @@
 
             
 
-                <ng-container *ngIf="Books.length === 0">
+                <ng-container *ngIf="books.length === 0">
                 No hay libros
                 </ng-container>
                 
-                <ng-container *ngFor="let book of Books;  let i = index">
+                <ng-container *ngFor="let book of books;  let i = index">
                     <app-card [libroHijo]="book" (eventoBooks) = "eliminarTarjeta($event)"></app-card>
 
             

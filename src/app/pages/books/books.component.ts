@@ -16,7 +16,7 @@ import { Book } from 'src/app/models/book';
 export class BooksComponent implements OnInit
 
 {
-  public Books : Book[];
+  public books : Book[];
   
   
   
@@ -27,7 +27,7 @@ export class BooksComponent implements OnInit
   {
 
     // this.Books=[];
-    this.Books = [
+    this.books = [
       //creo libros
       new Book("Un verso suelto", "Tapa Blanda", "Use Lahoz", 15 , "assets/img/L1.jpg", 22222, 22221),
       new Book("Carol", "Tapa Blanda", "Patricia Highsmith", 18 , "assets/img/L2carol.jpeg", 33333, 33331),
@@ -47,7 +47,7 @@ ngOnInit():void
     input5: HTMLInputElement, input6: HTMLInputElement, input7: HTMLInputElement) {
 
     // Crear un nuevo libro con los valores de los inputs
-    this.Books[this.Books.length] = new Book(
+    this.books[this.books.length] = new Book(
       
       input3.value,           // title
       input4.value,           // type
@@ -69,7 +69,7 @@ ngOnInit():void
     //guardo id 
     {
       console.log(identificadorlibro);
-      this.Books = this.Books.filter(book => book.id_book !== identificadorlibro )
+      this.books = this.books.filter(book => book.id_book !== identificadorlibro )
 
 
 
