@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import { BooksComponent } from './pages/books/books.component';
 import { ReflibroPipe } from './pipes/reflibro.pipe';
 import { CardComponent } from './components/card/card.component';
+import { UpdateBookComponent } from './pages/update-book/update-book.component';
+import { AddBookComponent } from './pages/add-book/add-book.component';
+import { BooksService } from './shared/books.service';
 
 
 @NgModule({
@@ -26,6 +29,8 @@ import { CardComponent } from './components/card/card.component';
     BooksComponent,
     ReflibroPipe,
     CardComponent,
+    UpdateBookComponent,
+    AddBookComponent,
 
    
     
@@ -37,7 +42,7 @@ import { CardComponent } from './components/card/card.component';
     CommonModule
 
   ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

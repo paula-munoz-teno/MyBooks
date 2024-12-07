@@ -1,144 +1,60 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Book } from 'src/app/models/book';
-
+import { Component, OnInit } from '@angular/core';
+import { BooksService } from '../../shared/books.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
+export class BooksComponent implements OnInit {
+  public parametro: string;
 
+  //arrray de libros 
+ 
 
-// ¿Cuándo se utiliza ngOnInit()?
-// Inicialización de datos: Es común usar ngOnInit() para inicializar datos, como cargar información desde un servicio, establecer valores predeterminados o hacer cualquier configuración necesaria antes de que el componente sea renderizado en la vista.
-// Llamadas a servicios: Si necesitas hacer una llamada a un servicio para obtener datos cuando el componente se carga, ngOnInit() es el lugar adecuado para hacerlo.
+  constructor(public bookService: BooksService, private router: Router, private rutaActiva: ActivatedRoute) {}
 
-export class BooksComponent implements OnInit
-
-{
-  public books : Book[];
-  
-  
-  
-  
-//creo array de libros 
-
-  constructor()
-  {
-
-    // this.Books=[];
-    this.books = [
-      //creo libros
-      new Book("Un verso suelto", "Tapa Blanda", "Use Lahoz", 15 , "assets/img/L1.jpg", 22222, 22221),
-      new Book("Carol", "Tapa Blanda", "Patricia Highsmith", 18 , "assets/img/L2carol.jpeg", 33333, 33331),
-      new Book("Los siete Maridos de Evelyn Hugo", "Tapa Blanda", "Taylor Jekkins Reid", 20 , "assets/img/L3.webp",44444, 44441)
-  //poner al final
-    ]     
-    // this.Books[3] = {id_user:; id_book: title:"",   }
-   
+  ngOnInit(): void {
+    console.log(this.bookService.getAll());
+    this.parametro = this.rutaActiva.snapshot.params.parametro1;
   }
 
-ngOnInit():void
-  {}
+  irFormulario() {
+    this.router.navigate(["/formulario"]);
+  }
 
-
-
-  enviar(input1: HTMLInputElement, input2: HTMLInputElement, input3: HTMLInputElement, input4: HTMLInputElement,
-    input5: HTMLInputElement, input6: HTMLInputElement, input7: HTMLInputElement) {
-
-    // Crear un nuevo libro con los valores de los inputs
-    this.books[this.books.length] = new Book(
-      
-      input3.value,           // title
-      input4.value,           // type
-      input5.value,           // author
-      parseFloat(input6.value),// price
-      input7.value,            // photo,
-      parseInt(input1.value), // id_book
-      parseInt(input2.value) // id_user
-    );
-
-  
-    
-
+  eliminarTarjeta(id_book: number) {
+    console.log(id_book);
+    const resultado = this.bookService.delete(id_book);
+    if (resultado) {
+      console.log('Libro eliminado con éxito');
+      //dar array de libros.getall
+    } else {
+      console.log('No se encontró el libro para eliminar');
     }
 
-
-    eliminarTarjeta(identificadorlibro:number)
-    
-    //guardo id 
-    {
-      console.log(identificadorlibro);
-      this.books = this.books.filter(book => book.id_book !== identificadorlibro )
+  }
 
 
-
-      
-//guardo el id en el atributo idBook
-//filter o for
-    
-    }
-
-    // removeBook(bookId: number) {
-    //   this.books = this.books.filter(book => book.id !== bookId);
-    
-    // ocultar(nuevoBooksHijo: Book[]){
-    // console.log(nuevoBooksHijo);
-    // this.Bookspadre = nuevoBooksHijo;
-    // }
-
-  // enviar(input1:HTMLInputElement, input2:HTMLInputElement, input3:HTMLInputElement, input4:HTMLInputElement,
-  // input5:HTMLInputElement, input6:HTMLInputElement, input7:HTMLInputElement)
-  // { this.Books[3].id_book = parseInt(input1.value),                    
-  //   this.Books[3].id_user = parseInt(input2.value),
-  //   this.Books[3].title = input3.value,
-  //   this.Books[3].type = input4.value,
-  //   this.Books[3].author = input5.value,
-  //   this.Books[3].price = parseInt(input6.value)
-  //   this.Books[3].photo = input7.value
-  // }
-  
-// agregarlibro(){
-
-//     this.Books.push(this.Books[3])
-//       }
-
-     
-  // agregarLibro() {
-  //   // Este método no tiene sentido tal como está. 
-  //   // Asumiré que deseas agregar un nuevo libro, pero no tienes un libro definido para agregar.
-  //   // Por ahora, vamos a agregar un libro de ejemplo.
-  //   const nuevoLibro = new Book(55555, 55551, "Nuevo Libro", "Tapa Dura", "Autor Desconocido", 25, "assets/img/L4.jpg");
-  //   this.Books.push(nuevoLibro);
-  // }
-
-  // enviar(input1: HTMLInputElement, input2: HTMLInputElement, input3: HTMLInputElement, input4: HTMLInputElement,
-  //   input5: HTMLInputElement, input6: HTMLInputElement, input7: HTMLInputElement) {
-
-  //   // Crear un nuevo libro con los valores de los inputs
-  //   const nuevoLibro = new Book(
-  //     parseInt(input1.value), // id_book
-  //     parseInt(input2.value), // id_user
-  //     input3.value,           // title
-  //     input4.value,           // type
-  //     input5.value,           // author
-  //     parseFloat(input6.value),// price
-  //     input7.value            // photo
-  //   );
-
-  //   console.log(nuevoLibro);
-
-  //   }
-// enviar(input1:HTMLInputElement, input2:HTMLInputElement, input3:HTMLInputElement, input4:HTMLInputElement,
-//   input5:HTMLInputElement, input6:HTMLInputElement, input7:HTMLInputElement)
-//   { this.Books[0].id_book = input1.value                    ,
-//     this.Books[0].id_user = input2.value,
-//     this.Books[0].title = input3.value,
-//     this.Books[0].type = input4.value,
-//     this.Books[0].author = input5.value,
-//     this.Books[0].price = input6.value
-//     this.Books[0].photo = input7.value
+  // si el html es igual a un id que me de el libro correspondiente y si no todos
+//  buscarLibros(id_book) {
+//   if (id_book) {
+//     let book = this.bookService.getOne(id_book);
+//     // Si se encuentra el libro, lo muestra; si no, muestra un array vacío
+//     return book ? [book] : [];
+//   } else {
+//     return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
 //   }
 
+// }
 
-  }
+
+
+buscarLibros(idinsertado: HTMLInputElement) {
+  this.bookService.getOne(Number.parseInt(idinsertado.value))
+
+}
+}
+
+
