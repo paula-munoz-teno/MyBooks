@@ -25,6 +25,7 @@ eliminarTarjeta(){
 //librohijo es un objeto libro
 console.log(this.libroHijo.id_book)
 this.eventoBooks.emit(this.libroHijo.id_book);
+
 //emit es enviar pero yo quiero enviar el id 
 }
 
