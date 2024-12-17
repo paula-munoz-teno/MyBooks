@@ -58,13 +58,7 @@ public delete(id_book: number): boolean {
 }
 
 
-
-
-
 }
-
-
-
 
 
 

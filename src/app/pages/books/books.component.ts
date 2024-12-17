@@ -37,24 +37,47 @@ export class BooksComponent implements OnInit {
   }
 
 
-  // si el html es igual a un id que me de el libro correspondiente y si no todos
-//  buscarLibros(id_book) {
-//   if (id_book) {
-//     let book = this.bookService.getOne(id_book);
-//     // Si se encuentra el libro, lo muestra; si no, muestra un array vacío
-//     return book ? [book] : [];
-//   } else {
-//     return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
-//   }
 
+  buscarLibros(idinsertado: HTMLInputElement) {
+    let id = Number.parseInt(idinsertado.value);
+    
+    if (id) {
+    let libro = this.bookService.getOne(id);
+        if (libro) {
+          return [libro]; // Devuelve un array con el libro si se encontró
+      } else {
+          alert("No book with that ID was found.");
+          return []; // Devuelve un array vacío si no se encontró el libro
+
+      }
+   
+    }
+  
+    
+    else  {
+    return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
+    }
+  }
+
+
+
+
+  // Condicional ternario: condición ? valorSiVerdadero : valorSiFalso;
+  // libro ? [libro] : []; significa:
+
+// Si libro existe (es un objeto válido), devuelve un array que contiene ese libro.
+// Si libro no existe (es undefined o null), devuelve un array vacío.
+
+// equivale a esto: if (libro) {
+//   return [libro]; // Devuelve un array con el libro si se encontró
+// } else {
+//   return []; // Devuelve un array vacío si no se encontró el libro
 // }
 
-
-
-buscarLibros(idinsertado: HTMLInputElement) {
-  this.bookService.getOne(Number.parseInt(idinsertado.value))
-
+parseInputToNumber(value: string): number {
+  return parseInt(value, 10); // Asegúrate de especificar la base 10
 }
 }
+
 
 

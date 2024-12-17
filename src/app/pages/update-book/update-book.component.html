@@ -50,7 +50,7 @@
                     <input type="text" id="photo" formControlName="photo" class="form-control" #input7 />
                     </div>
                 
-                    <button type="submit" class="btn btn-primary" >Enviar</button> 
+                    <button type="button" (click)="cambioBook(input3.value, input4.value, input5.value, input6.value, input7.value, input1.value, input2.value)" class="btn btn-primary">Enviar</button>
                     <!-- <button type="button" (click)= "enviar(input1, input2, input3, input4, input5, input6, input7)" class="btn btn-dark">Modify</button> -->
                 </form>
 

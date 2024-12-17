@@ -22,6 +22,7 @@ export class AddBookComponent implements OnInit {
   
     let newBook = new Book(title, type, author, price, photo, id_book, id_user);
     this.bookService.add(newBook);
+    alert ("Book added to page Books")
     console.log('Libro agregado:', newBook);
     console.log(this.bookService.getAll());
   

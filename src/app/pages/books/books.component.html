@@ -25,7 +25,7 @@
                 <form class="d-flex" role="search">
                 
                   <input class="form-control me-2" type="search" #input1 placeholder="Search" aria-label="Search">
-                  <button type="button" (click)="buscarLibros(input1)" class="btn btn-secondary" type="submit">Search</button>
+                  <button type="button" (click)="buscarLibros(input1)" class="btn btn-secondary" >Search</button>
                 </form>
               </div>
             </nav>
@@ -39,11 +39,12 @@
                 <ng-container *ngIf="bookService.getAll().length === 0">
                 No hay libros
                 </ng-container>
+               
                 
-                <ng-container *ngFor="let book of bookService.getAll();  let i = index">
-                    <!-- <app-card [libroHijo]="book" (eventoBooks) = "eliminarTarjeta($event)"></app-card> -->
-              <app-card [libroHijo]="book" (eventoBooks) = "eliminarTarjeta($event)"></app-card>
+        
 
+                <ng-container *ngFor="let book of (input1.value ? [bookService.getOne(parseInputToNumber(input1.value))] : bookService.getAll())">
+                  <app-card [libroHijo]="book" (eventoBooks)="eliminarTarjeta(book.id_book)"></app-card>
 
               
               <!-- lo que pasa es como que se recarga la página de nuevo y lo elimina pero no se retiene el cambio
