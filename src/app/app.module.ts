@@ -15,6 +15,9 @@ import { CardComponent } from './components/card/card.component';
 import { UpdateBookComponent } from './pages/update-book/update-book.component';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import { BooksService } from './shared/books.service';
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 
 @NgModule({
@@ -31,6 +34,8 @@ import { BooksService } from './shared/books.service';
     CardComponent,
     UpdateBookComponent,
     AddBookComponent,
+    LoginComponent,
+    FormLoginComponent,
 
    
     
@@ -39,7 +44,8 @@ import { BooksService } from './shared/books.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
 
   ],
   providers: [BooksService],
