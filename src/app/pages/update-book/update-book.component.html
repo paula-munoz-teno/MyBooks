@@ -10,49 +10,54 @@
   <body>
 
     <div class="contenedorpadre">
-
-     
             <div class="container1">
                 <h1>Modify your books</h1>
                 <form class="form" >
-                    <div class="form-group">
-                    <label for="id_book">Book's ID </label>
-                    <input type="number" id="id_book" formControlName="id_book" class="form-control" #input1/>
-                    </div>
+                  <div class="form-group">
+                  <label for="id_book">Book's ID </label>
+                  <input type="number" id="id_book" formControlName="id_book" class="form-control" #id_book/>
+                  </div>
+              
+                  <div class="form-group">
+                  <label for="id_user">User's ID</label>
+                  <input type="number" id="id_user" formControlName="id_user" class="form-control" #id_user/>
+                  </div>
+              
+                  <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" id="title" formControlName="title" class="form-control" #title/>
+                  </div>
+              
+                  <div class="form-group">
+                  <label for="type">Type</label>
+                  <input type="text" id="type" formControlName="type" class="form-control" #type/>
+                  </div>
+              
+                  <div class="form-group">
+                  <label for="author">Author</label>
+                  <input type="text" id="author" formControlName="author" class="form-control"#author />
+                  </div>
+              
+                  <div class="form-group">
+                  <label for="price">Price</label>
+                  <input type="number" id="price" formControlName="price" class="form-control"#price />
+                  </div>
+              
+                  <div class="form-group">
+                  <label for="photo">Photo (URL)</label>
+                  <input type="text" id="photo" formControlName="photo" class="form-control" #photo />
+                  </div>
+              
+                  <!-- <button type="submit" class="btn btn-primary" >Enviar</button>  -->
+                  <button type="button" (click)= "cambioBook(title.value, type.value, author.value,price.value,
+                   photo.value, id_book.value, id_user.value )" class="btn btn-dark">Modify book</button>
+                  <!-- en este método es donde contactaresmos con el servicio -->
+                   <!-- minuto 10 vídeo -->
+                  </form>
+
+    
+
                 
-                    <div class="form-group">
-                    <label for="id_user">User's ID</label>
-                    <input type="number" id="id_user" formControlName="id_user" class="form-control" #input2/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" formControlName="title" class="form-control" #input3/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="type">Type</label>
-                    <input type="text" id="type" formControlName="type" class="form-control" #input4/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="author">Author</label>
-                    <input type="text" id="author" formControlName="author" class="form-control"#input5 />
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" id="price" formControlName="price" class="form-control"#input6 />
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="photo">Photo (URL)</label>
-                    <input type="text" id="photo" formControlName="photo" class="form-control" #input7 />
-                    </div>
-                
-                    <button type="button" (click)="cambioBook(input3.value, input4.value, input5.value, input6.value, input7.value, input1.value, input2.value)" class="btn btn-primary">Enviar</button>
-                    <!-- <button type="button" (click)= "enviar(input1, input2, input3, input4, input5, input6, input7)" class="btn btn-dark">Modify</button> -->
-                </form>
 
         
             </div>  

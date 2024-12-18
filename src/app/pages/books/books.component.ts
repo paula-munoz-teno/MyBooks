@@ -51,9 +51,7 @@ export class BooksComponent implements OnInit {
 
       }
    
-    }
-  
-    
+    }  
     else  {
     return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
     }

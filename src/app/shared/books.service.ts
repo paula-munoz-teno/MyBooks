@@ -22,14 +22,32 @@ public getAll():Book[] {
 return this.books;
 }
 
-public getOne(id_book: number): Book {
-  // Busca el libro en el array de libros por su id
-  return this.books.find(book => book.id_book === id_book);
+// public getOne(id_book: number): Book {
+//   // Busca el libro en el array de libros por su id
+//   return this.books.find(book => book.id_book === id_book);
+// }
+
+public getOne(id_book: number): Book | undefined {
+  const book = this.books.find(book => book.id_book === id_book);
+  console.log('Buscando libro con ID:', id_book, 'Resultado:', book); // Agrega este log
+  return book;
 }
 
-public add(book:Book):void{
-  this.books.push(book)
+// public add(book:Book):void{
+//   this.books.push(book)
+// }
+
+public add(book: Book): boolean {
+  const existingBook = this.getOne(book.id_book);
+  if (existingBook) {
+    console.error('El libro con este ID ya existe.');
+    return false; // O maneja el error como prefieras
+  }
+  this.books.push(book);
+  console.log('Libro añadido:', book); // Agrega este log
+  return true; // Indica que se agregó correctamente
 }
+
 
 public edit(book: Book): boolean {
   // Busca el índice del libro que se desea editar
@@ -46,7 +64,6 @@ public edit(book: Book): boolean {
   // Devuelve true indicando que la edición fue exitosa
   return true;
 }
-
 
 
 public delete(id_book: number): boolean {

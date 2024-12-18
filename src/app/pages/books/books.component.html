@@ -40,13 +40,16 @@
                 No hay libros
                 </ng-container>
                
-                
-        
-
                 <ng-container *ngFor="let book of (input1.value ? [bookService.getOne(parseInputToNumber(input1.value))] : bookService.getAll())">
+                  <ng-container *ngIf="book"> <!-- Solo renderiza si book es válido -->
+                      <app-card [libroHijo]="book" (eventoBooks)="eliminarTarjeta(book.id_book)"></app-card>
+                  </ng-container>
+              
+
+                <!-- <ng-container *ngFor="let book of (input1.value ? [bookService.getOne(parseInputToNumber(input1.value))] : bookService.getAll())">
                   <app-card [libroHijo]="book" (eventoBooks)="eliminarTarjeta(book.id_book)"></app-card>
 
-              
+               -->
               <!-- lo que pasa es como que se recarga la página de nuevo y lo elimina pero no se retiene el cambio
               además, no funciona add books -->
             
