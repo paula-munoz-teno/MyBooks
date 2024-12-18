@@ -14,19 +14,24 @@ export class AddBookComponent implements OnInit {
     
   }
 
-  nuevoBook(title: string, type: string, author: string, price: number, photo: string, id_book: number, id_user: number) {
-    if (!title || !type || !author || !price || !photo || !id_book || !id_user) {
-      console.error('Todos los campos son obligatorios.');
+  nuevoBook(title: string, type: string, author: string, price: string, photo: string, id_book: string, id_user: string) {
+    // Convertir los valores a números
+    const numericPrice = parseFloat(price);
+    const numericIdBook = parseInt(id_book, 10);
+    const numericIdUser  = parseInt(id_user, 10);
+
+    if (!title || !type || !author || isNaN(numericPrice) || !photo || isNaN(numericIdBook) || isNaN(numericIdUser )) {
+      console.error('Todos los campos son obligatorios y deben ser válidos.');
       return;
     }
-  
-    let newBook = new Book(title, type, author, price, photo, id_book, id_user);
+
+    let newBook = new Book(title, type, author, numericPrice, photo, numericIdBook, numericIdUser );
     this.bookService.add(newBook);
-    alert ("Book added to page Books")
+    alert("Book added to page Books");
     console.log('Libro agregado:', newBook);
     console.log(this.bookService.getAll());
-  
   }
+
   }
 
 
