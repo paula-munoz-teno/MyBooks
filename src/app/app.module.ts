@@ -19,6 +19,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -35,10 +36,6 @@ import { ToastrModule } from 'ngx-toastr';
     UpdateBookComponent,
     AddBookComponent,
     LoginComponent,
-
-   
-    
-   
   ],
   imports: [
     BrowserModule,
@@ -48,9 +45,9 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     BrowserAnimationsModule, // Importante para las animaciones
     ToastrModule.forRoot(),
-    
+    HttpClientModule // Agrega HttpClientModule aquí
   ],
-    providers: [BooksService],
-    bootstrap: [AppComponent]
+  providers: [BooksService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

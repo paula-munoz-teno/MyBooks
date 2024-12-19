@@ -3,6 +3,7 @@
 
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Book } from '../models/book';
 export class BooksService 
 {
 
+  private apiUrl = '/books'; // URL base del API
   private  books: Book[] = [
   new Book("Un verso suelto", "Tapa Blanda", "Use Lahoz", 15, "assets/img/L1.jpg", 22222, 22221),
   new Book("Carol", "Tapa Blanda", "Patricia Highsmith", 18, "assets/img/L2carol.jpeg", 33333, 33331),
@@ -17,10 +19,13 @@ export class BooksService
 ];
   //dar valor a array vacío
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 public getAll():Book[] {
 return this.books;
 }
+
+
+
 
 // public getOne(id_book: number): Book {
 //   // Busca el libro en el array de libros por su id
