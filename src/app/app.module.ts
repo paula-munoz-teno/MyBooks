@@ -15,7 +15,10 @@ import { CardComponent } from './components/card/card.component';
 import { UpdateBookComponent } from './pages/update-book/update-book.component';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import { BooksService } from './shared/books.service';
-
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { BooksService } from './shared/books.service';
     CardComponent,
     UpdateBookComponent,
     AddBookComponent,
+    LoginComponent,
 
    
     
@@ -39,10 +43,14 @@ import { BooksService } from './shared/books.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule
-
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // Importante para las animaciones
+    ToastrModule.forRoot(),
+    
   ],
-  providers: [BooksService],
-  bootstrap: [AppComponent]
+    providers: [BooksService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

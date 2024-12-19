@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../../shared/books.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-books',
@@ -13,13 +15,20 @@ export class BooksComponent implements OnInit {
   //arrray de libros 
  
 
-  constructor(public bookService: BooksService, private router: Router, private rutaActiva: ActivatedRoute) {}
+  constructor(public bookService: BooksService, private router: Router, private rutaActiva: ActivatedRoute, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     console.log(this.bookService.getAll());
     this.parametro = this.rutaActiva.snapshot.params.parametro1;
   }
 
+
+ idNoExiste() {
+    this.toastr.warning('Id no existe', 'Advertencia');
+  }
+  
+
+    
   irFormulario() {
     this.router.navigate(["/formulario"]);
   }
@@ -37,26 +46,21 @@ export class BooksComponent implements OnInit {
   }
 
 
-
   buscarLibros(idinsertado: HTMLInputElement) {
     let id = Number.parseInt(idinsertado.value);
     
     if (id) {
-    let libro = this.bookService.getOne(id);
-        if (libro) {
-          return [libro]; // Devuelve un array con el libro si se encontró
+      let libro = this.bookService.getOne(id);
+      if (libro) {
+        return [libro]; // Devuelve un array con el libro si se encontró
       } else {
-          alert("No book with that ID was found.");
-          return []; // Devuelve un array vacío si no se encontró el libro
-
+        this.idNoExiste(); // Llama al método para mostrar la notificación
+        return []; // Devuelve un array vacío si no se encontró el libro
       }
-   
-    }  
-    else  {
-    return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
+    } else {
+      return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
     }
   }
-
 
 
 

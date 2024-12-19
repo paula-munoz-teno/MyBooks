@@ -29,3 +29,9 @@
 a{
     color:white
 }
+
+.active-link {
+    color: rgb(154, 14, 14); /* Color para el enlace activo */
+    font-weight: bold; /* Opcional: hacer el texto en negrita */
+    border-bottom: 2px solid rgb(154, 14, 14); /* Opcional: agregar una línea debajo */
+}

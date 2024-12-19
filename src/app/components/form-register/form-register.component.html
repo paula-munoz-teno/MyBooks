@@ -1,6 +1,55 @@
 <div class="formulario">
     <div class="contenedorform">
     <h2>Formulario de Registro</h2>
+        <form [formGroup]="myForm" action="/submit" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" formControlName="name">
+            <br><br>
+
+            <label for="surename">Surename::</label>
+            <input type="text" id="surename" name="surename" formControlName="surename">
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" formControlName="email"
+            [ngClass]="{'is-invalid': (myForm.get('email').dirty || myForm.get('email').touched) && !myForm.get('email').valid}">
+            <div *ngIf="!myForm.get('email').valid" class="invalid-feedback">
+              <div *ngIf="myForm.get('email').errors.required"><p>La dirección de email es obligatoria</p></div>
+              <div *ngIf="myForm.get('email').errors.email"><p>Dirección email incorrecta</p></div>
+            </div>
+            <br><br>
+
+            <label for="url">Url:</label>
+            <input type="text" id="url" name="url" formControlName="url">
+            <br><br>
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" formControlName="password"
+            [ngClass]="{'is-invalid': (myForm.get('password').dirty || myForm.get('password').touched) && !myForm.get('password').valid}">
+            <div *ngIf="!myForm.get('password').valid" class="invalid-feedback">
+              <div *ngIf="myForm.get('password').errors.required"><p>La clave es obligatoria</p></div>
+              <div *ngIf="myForm.get('password').errors.minlength"><p>La clave debe tener al menos 8 caracteres</p></div>    
+            </div>
+            <br><br>
+
+            <label for="repitpassword">Repetir contraseña:</label>
+            <input type="text" id="repitpassword" name="repitpassword" formControlName="repitpassword"
+            [ngClass]="{'is-invalid': (myForm.get('repitpassword').dirty || myForm.get('repitpassword').touched) && !myForm.get('repitpassword').valid}">
+            <div *ngIf="!myForm.get('repitpassword').valid" class="invalid-feedback">
+              <div *ngIf="myForm.get('repitpassword').errors.required"><p>La clave es obligatoria</p></div>
+              <div *ngIf="!myForm.get('repitpassword').errors.required && 
+                          myForm.get('repitpassword').errors.matchPassword"><p>Las claves no coinciden</p></div> 
+            </div>
+            <br><br>
+
+            <button class="button" (click)="register()" [disabled]="myForm.invalid">Submit</button>
+
+        </form>
+    </div>
+</div>
+<!-- <div class="formulario">
+    <div class="contenedorform">
+    <h2>Formulario de Registro</h2>
         <form action="/submit" method="POST">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
@@ -29,4 +78,4 @@
             <button type="submit">Enviar</button>
         </form>
     </div>
-</div>
+</div> -->

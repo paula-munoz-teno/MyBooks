@@ -1,0 +1,23 @@
+@import "node_modules/ngx-toastr/toastr.css";
+.toast-success {
+    background-color: #28a745; /* Color de fondo verde */
+    color: white; /* Color del texto */
+}
+
+/* Cambiar el color de fondo y el color del texto para los toastr de error */
+.toast-error {
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: white; /* Color del texto */
+}
+
+/* Cambiar el color de fondo y el color del texto para los toastr de advertencia */
+.toast-warning {
+    background-color: #ffc107; /* Color de fondo amarillo */
+    color: black; /* Color del texto */
+}
+
+/* Cambiar el color de fondo y el color del texto para los toastr de información */
+.toast-info {
+    background-color: #17a2b8; /* Color de fondo azul */
+    color: white; /* Color del texto */
+}

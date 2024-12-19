@@ -12,6 +12,10 @@ h2{
     padding:70px 0px 0px 0px;
 }
 
+p{
+    color: rgb(154, 14, 14);
+}
+
 form{
     /* border: 2px solid blue; */
     height: 100%;

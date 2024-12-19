@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,64 +9,49 @@
   <body>
 
     <div class="contenedorpadre">
-
-
-
-            <div class="container1">
-                <h1>Add your favourite books!</h1>
-             
-                <form class="form" >
-                    <div class="form-group">
-                    <label for="id_book">Book's ID </label>
-                    <input type="number" id="id_book" formControlName="id_book" class="form-control" #id_book/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="id_user">User's ID</label>
-                    <input type="number" id="id_user" formControlName="id_user" class="form-control" #id_user/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" formControlName="title" class="form-control" #title/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="type">Type</label>
-                    <input type="text" id="type" formControlName="type" class="form-control" #type/>
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="author">Author</label>
-                    <input type="text" id="author" formControlName="author" class="form-control"#author />
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="number" id="price" formControlName="price" class="form-control"#price />
-                    </div>
-                
-                    <div class="form-group">
-                    <label for="photo">Photo (URL)</label>
-                    <input type="text" id="photo" formControlName="photo" class="form-control" #photo />
-                    </div>
-                
-                    <button type="button" (click)= "nuevoBook(title.value, type.value, author.value,price.value,
-                     photo.value, id_book.value, id_user.value )" class="btn btn-dark">Add books</button>
-                    <!-- en este método es donde contactaresmos con el servicio -->
-                     <!-- minuto 10 vídeo -->
-                    </form>
-
-                  
-        
-            </div>  
-
-         
-
-
-
-
-
+      <div class="container1">
+        <h1>Add your favourite books!</h1>
+        <form class="form">
+          <div class="form-group">
+            <label for="id_book">Book's ID</label>
+            <input type="number" id="id_book" class="form-control" #id_book />
+          </div>
+          
+          <div class="form-group">
+            <label for="id_user">User 's ID</label>
+            <input type="number" id="id_user" class="form-control" #id_user />
+          </div>
+          
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control" #title />
+          </div>
+          
+          <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" id="type" class="form-control" #type />
+          </div>
+          
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" class="form-control" #author />
+          </div>
+          
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" id="price" class="form-control" #price />
+          </div>
+          
+          <div class="form-group">
+            <label for="photo">Photo (URL)</label>
+            <input type="text" id="photo" class="form-control" #photo />
+          </div>
+          
+          <button type="button" (click)="nuevoBook(title.value, type.value, author.value, price.value, photo.value, id_book.value, id_user.value)" class="btn btn-dark">Add books</button>
+          <!-- en este método es donde contactaremos con el servicio -->
+          <!-- minuto 10 vídeo -->
+        </form> 
+      </div>  
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
