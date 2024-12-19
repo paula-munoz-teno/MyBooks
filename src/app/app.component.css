@@ -1,4 +1,5 @@
 @import "node_modules/ngx-toastr/toastr.css";
+
 .toast-success {
     background-color: #28a745; /* Color de fondo verde */
     color: white; /* Color del texto */

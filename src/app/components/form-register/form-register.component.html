@@ -24,7 +24,7 @@
             <br><br>
 
             <label for="password">Password:</label>
-            <input type="text" id="password" name="password" formControlName="password"
+            <input type="password" id="password" name="password" formControlName="password"
             [ngClass]="{'is-invalid': (myForm.get('password').dirty || myForm.get('password').touched) && !myForm.get('password').valid}">
             <div *ngIf="!myForm.get('password').valid" class="invalid-feedback">
               <div *ngIf="myForm.get('password').errors.required"><p>La clave es obligatoria</p></div>
@@ -33,7 +33,7 @@
             <br><br>
 
             <label for="repitpassword">Repetir contraseña:</label>
-            <input type="text" id="repitpassword" name="repitpassword" formControlName="repitpassword"
+            <input type="password" id="repitpassword" name="repitpassword" formControlName="repitpassword"
             [ngClass]="{'is-invalid': (myForm.get('repitpassword').dirty || myForm.get('repitpassword').touched) && !myForm.get('repitpassword').valid}">
             <div *ngIf="!myForm.get('repitpassword').valid" class="invalid-feedback">
               <div *ngIf="myForm.get('repitpassword').errors.required"><p>La clave es obligatoria</p></div>
