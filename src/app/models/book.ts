@@ -9,6 +9,7 @@ export class Book {
           public photo: string, public id_book: number =0, public id_user: number =0)
           
         {
+          
 
         }
 }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../../shared/books.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { Book } from 'src/app/models/book';
+import { Respuesta } from 'src/app/models/respuesta';
 
 @Component({
   selector: 'app-books',
@@ -11,75 +12,101 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BooksComponent implements OnInit {
   public parametro: string;
+  public books: Book[] = []; // Array para almacenar los libros
 
-  //arrray de libros 
- 
-
-  constructor(public bookService: BooksService, private router: Router, private rutaActiva: ActivatedRoute, private toastr: ToastrService) {}
+  constructor(
+    private bookService: BooksService,
+    private router: Router,
+    private rutaActiva: ActivatedRoute,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.bookService.getAll());
     this.parametro = this.rutaActiva.snapshot.params.parametro1;
+    this.loadBooks(); // Cargar los libros al inicializar el componente
   }
 
+  loadBooks(): void {
+    this.bookService.getAll().subscribe({
+        next: (response: Respuesta) => {
+            if (response.error) {
+                this.handleError(response.mensaje);
+            } else {
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    this.books = response.data as Book[]; // Asignar los datos recibidos al array de libros
+                } else {
+                    this.handleError('No hay libros disponibles'); // Mensaje de error si no hay libros
+                }
+            }
+        },
+        error: (error) => this.handleError('Error al cargar los libros: ' + error)
+    });
+}
 
- idNoExiste() {
+  handleError(message: string): void {
+    console.error(message);
+    this.toastr.error(message, 'Error');
+  }
+
+  idNoExiste(): void {
     this.toastr.warning('Id no existe', 'Advertencia');
   }
-  
 
-    
-  irFormulario() {
+  irFormulario(): void {
     this.router.navigate(["/formulario"]);
   }
 
-  eliminarTarjeta(id_book: number) {
-    console.log(id_book);
-    const resultado = this.bookService.delete(id_book);
-    if (resultado) {
-      console.log('Libro eliminado con éxito');
-      //dar array de libros.getall
-    } else {
-      console.log('No se encontró el libro para eliminar');
-    }
-
-  }
-
-
-  buscarLibros(idinsertado: HTMLInputElement) {
-    let id = Number.parseInt(idinsertado.value);
-    
-    if (id) {
-      let libro = this.bookService.getOne(id);
-      if (libro) {
-        return [libro]; // Devuelve un array con el libro si se encontró
-      } else {
-        this.idNoExiste(); // Llama al método para mostrar la notificación
-        return []; // Devuelve un array vacío si no se encontró el libro
-      }
-    } else {
-      return this.bookService.getAll(); // Si el campo de búsqueda está vacío, muestra todos los libros
-    }
-  }
-
-
-
-  // Condicional ternario: condición ? valorSiVerdadero : valorSiFalso;
-  // libro ? [libro] : []; significa:
-
-// Si libro existe (es un objeto válido), devuelve un array que contiene ese libro.
-// Si libro no existe (es undefined o null), devuelve un array vacío.
-
-// equivale a esto: if (libro) {
-//   return [libro]; // Devuelve un array con el libro si se encontró
-// } else {
-//   return []; // Devuelve un array vacío si no se encontró el libro
+//   eliminarTarjeta(id_book: number): void {
+//     console.log('Eliminando libro con ID:', id_book); // Agrega este log
+//     this.bookService.deleteOne(id_book).subscribe({
+//         next: (response: Respuesta) => {
+//             if (response.error) {
+//                 this.handleError(response.mensaje);
+//             } else {
+//                 this.toastr.success('Libro eliminado con éxito');
+//                 this.loadBooks(); // Recargar la lista de libros después de eliminar
+//             }
+//         },
+//         error: (error) => this.handleError('Error al eliminar el libro: ' + error)
+//     });
 // }
 
-parseInputToNumber(value: string): number {
-  return parseInt(value, 10); // Asegúrate de especificar la base 10
+eliminarTarjeta(id_book: number): void {
+  console.log('Eliminando libro con ID:', id_book); // Agrega este log
+  this.bookService.delete(id_book).subscribe({
+      next: (response: Respuesta) => {
+          if (response.error) {
+              this.handleError(response.mensaje);
+          } else {
+              this.toastr.success('Libro eliminado con éxito');
+              this.loadBooks(); // Recargar la lista de libros después de eliminar
+          }
+      },
+      error: (error) => this.handleError('Error al eliminar el libro: ' + error)
+  });
+}
+
+  buscarLibros(idinsertado: HTMLInputElement): void {
+    const id = Number.parseInt(idinsertado.value);
+    console.log('Buscando libro con ID:', id); // Agrega este log
+    
+    if (id) {
+        this.bookService.getOne(id).subscribe({
+            next: (response: Respuesta) => {
+                if (response.error) {
+                    this.idNoExiste(); // Llama al método para mostrar la notificación
+                } else {
+                    this.books = [response.data as Book]; // Asigna el libro encontrado al array
+                    console.log('Libro encontrado:', response.data); // Agrega este log
+                }
+            },
+            error: (error) => {
+                console.error('Error al buscar el libro:', error);
+                this.idNoExiste(); // Llama al método para mostrar la notificación
+            }
+        });
+    } else {
+        this.loadBooks(); // Si el campo de búsqueda está vacío, muestra todos los libros
+    }
 }
 }
-
-
-
