@@ -56,20 +56,6 @@ export class BooksComponent implements OnInit {
     this.router.navigate(["/formulario"]);
   }
 
-//   eliminarTarjeta(id_book: number): void {
-//     console.log('Eliminando libro con ID:', id_book); // Agrega este log
-//     this.bookService.deleteOne(id_book).subscribe({
-//         next: (response: Respuesta) => {
-//             if (response.error) {
-//                 this.handleError(response.mensaje);
-//             } else {
-//                 this.toastr.success('Libro eliminado con éxito');
-//                 this.loadBooks(); // Recargar la lista de libros después de eliminar
-//             }
-//         },
-//         error: (error) => this.handleError('Error al eliminar el libro: ' + error)
-//     });
-// }
 
 eliminarTarjeta(id_book: number): void {
   console.log('Eliminando libro con ID:', id_book); // Agrega este log
